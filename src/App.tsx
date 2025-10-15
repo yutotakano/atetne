@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import { Button } from "./components/Button";
+import { Icons } from "./components/Icon";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -13,6 +15,9 @@ function App() {
 
   return (
     <main className="container">
+      <Button onClick={() => greet()}>
+        <Icons.minMac />
+      </Button>
       <h1>Welcome to Tauri + React</h1>
 
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
