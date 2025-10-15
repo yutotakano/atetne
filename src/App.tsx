@@ -15,9 +15,17 @@ function App() {
 
   return (
     <main className="container">
+      <div style={{ display: "flex", flexDirection: "row", gap: "9px" }}>
       <Button onClick={() => greet()}>
-        <Icons.minMac />
+        <Icons.minMac width={8} height={8} />
       </Button>
+      <Button onClick={() => greet()}>
+        <Icons.fullMac width={6} height={6} />
+      </Button>
+      <Button onClick={() => greet()}>
+        <Icons.closeMac width={8} height={8} />
+      </Button>
+      </div>
       <h1>Welcome to Tauri + React</h1>
 
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
