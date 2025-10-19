@@ -3,8 +3,8 @@ import type { JSX, SVGProps } from "react";
 export const Icons = {
   closeMac: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
     <svg
-      width="6"
-      height="6"
+      width="8"
+      height="8"
       viewBox="0 0 16 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export const Icons = {
     <svg
       width="6"
       height="6"
-      viewBox="0 0 15 15"
+      viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}

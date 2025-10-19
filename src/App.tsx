@@ -47,7 +47,7 @@ function App() {
                 currentMouseX={localCoord.x}
                 currentMouseY={localCoord.y}
               >
-                <Icons.closeMac width={8} height={8} />
+                <Icons.closeMac />
               </Button>
             ))}
           </div>
