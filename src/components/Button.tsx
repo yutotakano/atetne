@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ButtonHTMLAttributes } from "react";
+import { useCallback, useState, type ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 import classes from "./Button.module.css"
 
