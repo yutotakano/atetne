@@ -3,13 +3,10 @@ import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/Button";
 import { Icons } from "./components/Icon";
-import { cursorPosition, getCurrentWindow, primaryMonitor } from "@tauri-apps/api/window";
+import { cursorPosition, getCurrentWindow } from "@tauri-apps/api/window";
 
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
   const [coord, setCoord] = useState({x: 0, y: 0});
   const [winCoord, setWinCoord] = useState({x: 0, y: 0});
   const localCoord = {
@@ -19,7 +16,7 @@ function App() {
 
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+    await invoke("greet", { "name": localCoord.x.toString() });
   }
 
   useEffect(() => {
@@ -49,20 +46,6 @@ function App() {
           </div>
         ))}
       </div>
-      <h1>Welcome to Tauri + React</h1>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <p>Coordinates: X: ${coord.x} Y: ${coord.y}</p>
-      <p>Window: X: ${winCoord.x} Y: ${winCoord.y}</p>
-      <p>Local: X: ${localCoord.x} Y: ${localCoord.y}</p>
-
-      <input
-        id="greet-input"
-        onChange={(e) => setName(e.currentTarget.value)}
-        placeholder="Enter a name..."
-      />
-      <p>{greetMsg}</p>
     </main>
   );
 }
