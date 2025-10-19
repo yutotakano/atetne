@@ -31,7 +31,7 @@ export const Button = ({
       ref={handleRect}
       {...props}
     >
-      {isMouseNear ? <div style={{ opacity: isMouseNear ? (130 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 100 : 1}}>{children}</div> : undefined}
+      {isMouseNear ? <div style={{ opacity: isMouseNear ? (100 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 80 : 1}}>{children}</div> : undefined}
     </button>
   )
 }
