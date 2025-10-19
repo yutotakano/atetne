@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/Button";
@@ -20,10 +20,10 @@ const initialState: AtetneState = "START_SCREEN";
 function App() {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
   const [winCoord, setWinCoord] = useState({ x: 0, y: 0 });
-  const localCoord = {
+  const localCoord = useMemo(() => ({
     x: coord.x - winCoord.x,
     y: coord.y - winCoord.y,
-  };
+  }), [coord, winCoord]);
 
   const [atetneState, setAtetneState] = useState(initialState);
 
