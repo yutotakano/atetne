@@ -14,10 +14,11 @@ export async function resizeButtonGrid(numX: number, numY: number) {
   const desiredSizeW = (numX + 1)*9 + numX*14;
   const desiredSizeH = (numY + 1)*9 + numY*14;
   const frames = 100;
+  let newSize = new LogicalSize(0, 0);
   for (let t = 0; t <= frames; t++) {
     const fraction = (t / frames);
-    const newSizeW = lerp(currentSize.width, desiredSizeW, easeOutQuad(fraction));
-    const newSizeH = lerp(currentSize.height, desiredSizeH, easeOutQuad(fraction));
-    await getCurrentWindow().setSize(new LogicalSize(newSizeW, newSizeH));
+    newSize.width = lerp(currentSize.width, desiredSizeW, easeOutQuad(fraction));
+    newSize.height = lerp(currentSize.height, desiredSizeH, easeOutQuad(fraction));
+    await getCurrentWindow().setSize(newSize);
   }
 }
