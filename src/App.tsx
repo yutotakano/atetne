@@ -3,7 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/Button";
 import { Icons } from "./components/Icon";
-import { cursorPosition, getCurrentWindow } from "@tauri-apps/api/window";
+import { cursorPosition, getCurrentWindow, LogicalSize } from "@tauri-apps/api/window";
 
 function App() {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
@@ -16,6 +16,18 @@ function App() {
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
     await invoke("greet", { name: localCoord.x.toString() });
+  }
+
+  async function test() {
+    const scale = await getCurrentWindow().scaleFactor();
+    const currentSize = (await getCurrentWindow().innerSize()).toLogical(scale);
+    const desiredSize = 6*9 + 14*5;
+    const duration = 100;
+    for (let t = 0; t <= duration; t++) {
+      const newSizeH = desiredSize + (currentSize.height - desiredSize) * (duration - t) / duration;
+      const newSizeW = desiredSize + (currentSize.width - desiredSize) * (duration - t) / duration;
+      await getCurrentWindow().setSize(new LogicalSize(newSizeW, newSizeH));
+    }
   }
 
   useEffect(() => {
@@ -43,7 +55,7 @@ function App() {
             {[...Array(5)].map((_, j) => (
               <Button
                 key={i * 5 + j}
-                onClick={() => greet()}
+                onClick={() => test()}
                 currentMouseX={localCoord.x}
                 currentMouseY={localCoord.y}
               >
