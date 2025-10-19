@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/Button";
 import { Icons } from "./components/Icon";
 import { cursorPosition, getCurrentWindow } from "@tauri-apps/api/window";
-import { resizeButtonGrid } from "./utils/resize-window";
+import { resizeButtonGrid, resizeWindow } from "./utils/resize-window";
 
 type AtetneState =
   | "START_SCREEN"
@@ -27,8 +27,10 @@ function App() {
   const [atetneState, setAtetneState] = useState(initialState);
 
   useEffect(() => {
-    if (atetneState === "CHOOSE_SCREEN") {
-      resizeButtonGrid(5, 5, false);
+    if (atetneState === "START_SCREEN") {
+      resizeWindow(200, 200);
+    } else if (atetneState === "CHOOSE_SCREEN") {
+      resizeButtonGrid(5, 1);
     }
   }, [atetneState]);
 
@@ -80,30 +82,20 @@ function App() {
             <Icons.fullMac />
           </Button>
           <Button
-            bg="#0E1428"
-            color="white"
+            bg="#5CC8FF"
             currentMouseX={localCoord.x}
             currentMouseY={localCoord.y}
           >
-            <Icons.fullMac />
+            <Icons.plusMac />
+          </Button>
+          <Button
+            bg="#E5CEDC"
+            currentMouseX={localCoord.x}
+            currentMouseY={localCoord.y}
+          >
+            <Icons.minMac />
           </Button>
         </div>
-        {[...Array(4)].map((_, i) => (
-          <div
-            key={i}
-            style={{ display: "flex", flexDirection: "row", gap: "9px" }}
-          >
-            {[...Array(5)].map((_, j) => (
-              <Button
-                key={i * 5 + j}
-                currentMouseX={localCoord.x}
-                currentMouseY={localCoord.y}
-              >
-                <Icons.closeMac />
-              </Button>
-            ))}
-          </div>
-        ))}
       </div>
       )}
       {(atetneState === "START_SCREEN" && (
