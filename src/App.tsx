@@ -78,12 +78,12 @@ function App() {
               <Icons.fullMac />
             </Button>
             <Button
-              bg="#5CC8FF"
+              bg="#989bffff"
             >
               <Icons.plusMac />
             </Button>
             <Button
-              bg="#E5CEDC"
+              bg="#dfb8e4ff"
             >
               <Icons.search />
             </Button>
