@@ -64,23 +64,26 @@ function App() {
           >
             <Button
               bg="#ff544d"
+              disabled
             >
               <Icons.closeMac />
             </Button>
             <Button
               bg="#ffbd2e"
             >
-              <Icons.minMac />
+              <Icons.one />
             </Button>
             <Button
               bg="#28c93f"
+              disabled
             >
-              <Icons.fullMac />
+              <Icons.two />
             </Button>
             <Button
               bg="#989bffff"
+              disabled
             >
-              <Icons.plusMac />
+              <Icons.three />
             </Button>
             <Button
               bg="#dfb8e4ff"

@@ -94,14 +94,66 @@ export const Icons = {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
       <path d="M21 21l-6 -6" />
+    </svg>
+  ),
+  one: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="8"
+      height="8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M13 20v-16l-5 5" />
+    </svg>
+  ),
+  two: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="8"
+      height="8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M8 8a4 4 0 1 1 8 0c0 1.098 -.564 2.025 -1.159 2.815l-6.841 9.185h8" />
+    </svg>
+  ),
+  three: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="8"
+      height="8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 12a4 4 0 1 0 -4 -4" />
+      <path d="M8 16a4 4 0 1 0 4 -4" />
     </svg>
   ),
 };
