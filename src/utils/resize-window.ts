@@ -8,12 +8,11 @@ function easeOutQuad(x: number): number {
   return 1 - (1 - x) * (1 - x);
 }
 
-export async function resizeButtonGrid(numX: number, numY: number, resizable: boolean = false, keepCurrent: boolean = false) {
+export async function resizeWindow(desiredSizeW: number, desiredSizeH: number, resizable: boolean = false, keepCurrent: boolean = false) {
+  console.log("Resizing to " + desiredSizeH);
   await getCurrentWindow().setResizable(resizable);
   const scale = await getCurrentWindow().scaleFactor();
   const currentSize = (await getCurrentWindow().innerSize()).toLogical(scale);
-  const desiredSizeW = (numX + 1)*9 + numX*14;
-  const desiredSizeH = (numY + 1)*9 + numY*14;
 
   // Asynchronously set min/max size while we start animating
   const smaller = new LogicalSize(Math.min(desiredSizeW, currentSize.width), Math.min(desiredSizeH, currentSize.height));
@@ -37,4 +36,10 @@ export async function resizeButtonGrid(numX: number, numY: number, resizable: bo
     getCurrentWindow().setMinSize(new LogicalSize(desiredSizeW, desiredSizeH));
     getCurrentWindow().setMaxSize(new LogicalSize(desiredSizeW, desiredSizeH));
   }
+}
+
+export async function resizeButtonGrid(numX: number, numY: number, resizable: boolean = false, keepCurrent: boolean = false) {
+  const desiredSizeW = (numX + 1)*9 + numX*14;
+  const desiredSizeH = (numY + 1)*9 + numY*14;
+  await resizeWindow(desiredSizeW, desiredSizeH, resizable, keepCurrent);
 }
