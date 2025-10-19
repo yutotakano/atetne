@@ -23,7 +23,8 @@ export const Button = ({
 
   const midX = boundingClientRect.left + boundingClientRect.width / 2;
   const midY = boundingClientRect.top + boundingClientRect.height / 2;
-  const isMouseNear = Math.hypot(currentMouseX - midX, currentMouseY - midY) < 100
+  const isMouseNear = Math.hypot(currentMouseX - midX, currentMouseY - midY) < 100;
+  const childOpacity = isMouseNear ? (100 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 80 : 1;
 
   return (
     <button
@@ -31,7 +32,7 @@ export const Button = ({
       ref={handleRect}
       {...props}
     >
-      {isMouseNear ? <div style={{ opacity: isMouseNear ? (100 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 80 : 1}}>{children}</div> : undefined}
+      {isMouseNear ? <div style={{ opacity: childOpacity }}>{children}</div> : undefined}
     </button>
   )
 }
