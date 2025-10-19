@@ -11,7 +11,7 @@
   margin: 0;
   background: #ff5c60;
   box-sizing: border-box;
-  border: 0.5px solid color-mix(in hsl, #ff5c60 88%, black 12%);
+  border: 0.5px solid color-mix(in hsl, transparent 88%, black 12%);
   color: rgba(0, 0, 0, 0.6);
 }
 

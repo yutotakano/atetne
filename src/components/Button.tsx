@@ -5,6 +5,7 @@ import classes from "./Button.module.css";
 interface WindowButtonProps {
   currentMouseX: number;
   currentMouseY: number;
+  color?: string;
 }
 
 export const Button = ({
@@ -12,6 +13,7 @@ export const Button = ({
   currentMouseX,
   currentMouseY,
   children,
+  color = "#ff5c60",
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & WindowButtonProps) => {
   const [boundingClientRect, setBoundingClientRect] = useState<DOMRect>(
@@ -35,6 +37,7 @@ export const Button = ({
     <button
       className={clsx(classes.button, className)}
       ref={handleRect}
+      style={{ background: color }}
       {...props}
     >
       {isMouseNear ? (
