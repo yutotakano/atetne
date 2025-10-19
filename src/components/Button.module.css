@@ -15,7 +15,7 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.button:active::before {
+.button:active::after {
   content: "";
   position: absolute;
   top: 0;
