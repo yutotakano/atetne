@@ -14,6 +14,8 @@
       {
         "title": "atetne",
         "width": 200,
+        "minHeight": 124,
+        "minWidth": 124,
         "height": 200,
         "decorations": false,
         "transparent": true
