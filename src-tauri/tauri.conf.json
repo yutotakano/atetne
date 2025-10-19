@@ -13,14 +13,16 @@
     "windows": [
       {
         "title": "atetne",
-        "width": 800,
-        "height": 600,
-        "decorations": false
+        "width": 200,
+        "height": 200,
+        "decorations": false,
+        "transparent": true
       }
     ],
     "security": {
       "csp": null
-    }
+    },
+    "macOSPrivateApi": true
   },
   "bundle": {
     "active": true,
