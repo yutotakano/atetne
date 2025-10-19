@@ -85,7 +85,7 @@ function App() {
             <Button
               bg="#E5CEDC"
             >
-              <Icons.minMac />
+              <Icons.search />
             </Button>
           </div>
         </div>
