@@ -5,6 +5,7 @@ import classes from "./Button.module.css";
 interface WindowButtonProps {
   currentMouseX: number;
   currentMouseY: number;
+  bg?: string;
   color?: string;
 }
 
@@ -13,7 +14,8 @@ export const Button = ({
   currentMouseX,
   currentMouseY,
   children,
-  color = "#ff5c60",
+  bg = "#ff5c60",
+  color = "#000000",
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & WindowButtonProps) => {
   const [boundingClientRect, setBoundingClientRect] = useState<DOMRect>(
@@ -37,11 +39,13 @@ export const Button = ({
     <button
       className={clsx(classes.button, className)}
       ref={handleRect}
-      style={{ background: color }}
+      style={{ background: bg, color: color }}
       {...props}
     >
       {isMouseNear ? (
-        <div style={{ opacity: childOpacity }} className={classes.buttonInner}>{children}</div>
+        <div className={clsx(classes.buttonTextOpacitySetter, classes.buttonInner)}>
+          <div style={{ opacity: childOpacity }} className={classes.buttonInner}>{children}</div>
+        </div>
       ) : undefined}
     </button>
   );

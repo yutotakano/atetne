@@ -55,7 +55,40 @@ function App() {
     <main className="container">
       {atetneState === "CHOOSE_SCREEN" && (
       <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
-        {[...Array(5)].map((_, i) => (
+        <div
+          style={{ display: "flex", flexDirection: "row", gap: "9px" }}
+        >
+          <Button
+            bg="#ff544d"
+            currentMouseX={localCoord.x}
+            currentMouseY={localCoord.y}
+          >
+            <Icons.closeMac />
+          </Button>
+          <Button
+          bg="#ffbd2e"
+            currentMouseX={localCoord.x}
+            currentMouseY={localCoord.y}
+          >
+            <Icons.minMac />
+          </Button>
+          <Button
+          bg="#28c93f"
+            currentMouseX={localCoord.x}
+            currentMouseY={localCoord.y}
+          >
+            <Icons.fullMac />
+          </Button>
+          <Button
+            bg="#0E1428"
+            color="white"
+            currentMouseX={localCoord.x}
+            currentMouseY={localCoord.y}
+          >
+            <Icons.fullMac />
+          </Button>
+        </div>
+        {[...Array(4)].map((_, i) => (
           <div
             key={i}
             style={{ display: "flex", flexDirection: "row", gap: "9px" }}

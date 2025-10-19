@@ -12,7 +12,7 @@
   background: #ff5c60;
   box-sizing: border-box;
   border: 0.5px solid color-mix(in hsl, transparent 88%, black 12%);
-  color: rgba(0, 0, 0, 0.6);
+  color: black;
 }
 
 .button:active::after {
@@ -25,6 +25,10 @@
   z-index: 0;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+}
+
+.button .buttonTextOpacitySetter {
+  opacity: 0.6;
 }
 
 .button .buttonInner {
