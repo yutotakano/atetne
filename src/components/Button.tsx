@@ -41,7 +41,7 @@ export const Button = ({
       {...props}
     >
       {isMouseNear ? (
-        <div style={{ opacity: childOpacity }}>{children}</div>
+        <div style={{ opacity: childOpacity }} className={classes.buttonInner}>{children}</div>
       ) : undefined}
     </button>
   );
