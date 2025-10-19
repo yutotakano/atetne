@@ -1,10 +1,10 @@
 import { useCallback, useState, type ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
-import classes from "./Button.module.css"
+import classes from "./Button.module.css";
 
 interface WindowButtonProps {
-  currentMouseX: number,
-  currentMouseY: number,
+  currentMouseX: number;
+  currentMouseY: number;
 }
 
 export const Button = ({
@@ -14,7 +14,9 @@ export const Button = ({
   children,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & WindowButtonProps) => {
-  const [boundingClientRect, setBoundingClientRect] = useState<DOMRect>(new DOMRect());
+  const [boundingClientRect, setBoundingClientRect] = useState<DOMRect>(
+    new DOMRect(),
+  );
   const handleRect = useCallback((node: HTMLButtonElement | null) => {
     if (node) {
       setBoundingClientRect(node.getBoundingClientRect());
@@ -23,8 +25,11 @@ export const Button = ({
 
   const midX = boundingClientRect.left + boundingClientRect.width / 2;
   const midY = boundingClientRect.top + boundingClientRect.height / 2;
-  const isMouseNear = Math.hypot(currentMouseX - midX, currentMouseY - midY) < 100;
-  const childOpacity = isMouseNear ? (100 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 80 : 1;
+  const isMouseNear =
+    Math.hypot(currentMouseX - midX, currentMouseY - midY) < 100;
+  const childOpacity = isMouseNear
+    ? (100 - Math.hypot(currentMouseX - midX, currentMouseY - midY)) / 80
+    : 1;
 
   return (
     <button
@@ -32,7 +37,9 @@ export const Button = ({
       ref={handleRect}
       {...props}
     >
-      {isMouseNear ? <div style={{ opacity: childOpacity }}>{children}</div> : undefined}
+      {isMouseNear ? (
+        <div style={{ opacity: childOpacity }}>{children}</div>
+      ) : undefined}
     </button>
-  )
-}
+  );
+};

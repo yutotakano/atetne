@@ -1,4 +1,4 @@
-import type { JSX, SVGProps } from "react"
+import type { JSX, SVGProps } from "react";
 
 export const Icons = {
   closeMac: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
@@ -73,4 +73,4 @@ export const Icons = {
       </g>
     </svg>
   ),
-}
+};
