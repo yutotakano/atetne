@@ -1,18 +1,15 @@
 import { useCallback, useState, type ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 import classes from "./Button.module.css";
+import { useLocalMouseCoords } from "../utils/local-mouse-coordinates";
 
 interface WindowButtonProps {
-  currentMouseX: number;
-  currentMouseY: number;
   bg?: string;
   color?: string;
 }
 
 export const Button = ({
   className,
-  currentMouseX,
-  currentMouseY,
   children,
   bg = "#ff5c60",
   color = "#000000",
@@ -26,6 +23,8 @@ export const Button = ({
       setBoundingClientRect(node.getBoundingClientRect());
     }
   }, []);
+
+  const { x: currentMouseX, y: currentMouseY } = useLocalMouseCoords();
 
   const midX = boundingClientRect.left + boundingClientRect.width / 2;
   const midY = boundingClientRect.top + boundingClientRect.height / 2;

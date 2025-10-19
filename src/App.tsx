@@ -5,6 +5,7 @@ import { Button } from "./components/Button";
 import { Icons } from "./components/Icon";
 import { cursorPosition, getCurrentWindow } from "@tauri-apps/api/window";
 import { resizeButtonGrid, resizeWindow } from "./utils/resize-window";
+import { LocalMouseCoordinatesProvider } from "./utils/local-mouse-coordinates";
 
 type AtetneState =
   | "START_SCREEN"
@@ -54,57 +55,49 @@ function App() {
   }, []);
 
   return (
-    <main className="container">
-      {atetneState === "CHOOSE_SCREEN" && (
-      <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
-        <div
-          style={{ display: "flex", flexDirection: "row", gap: "9px" }}
-        >
-          <Button
-            bg="#ff544d"
-            currentMouseX={localCoord.x}
-            currentMouseY={localCoord.y}
+    <LocalMouseCoordinatesProvider value={localCoord}>
+      <main className="container">
+        {atetneState === "CHOOSE_SCREEN" && (
+        <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "row", gap: "9px" }}
           >
-            <Icons.closeMac />
-          </Button>
-          <Button
-          bg="#ffbd2e"
-            currentMouseX={localCoord.x}
-            currentMouseY={localCoord.y}
-          >
-            <Icons.minMac />
-          </Button>
-          <Button
-          bg="#28c93f"
-            currentMouseX={localCoord.x}
-            currentMouseY={localCoord.y}
-          >
-            <Icons.fullMac />
-          </Button>
-          <Button
-            bg="#5CC8FF"
-            currentMouseX={localCoord.x}
-            currentMouseY={localCoord.y}
-          >
-            <Icons.plusMac />
-          </Button>
-          <Button
-            bg="#E5CEDC"
-            currentMouseX={localCoord.x}
-            currentMouseY={localCoord.y}
-          >
-            <Icons.minMac />
-          </Button>
+            <Button
+              bg="#ff544d"
+            >
+              <Icons.closeMac />
+            </Button>
+            <Button
+              bg="#ffbd2e"
+            >
+              <Icons.minMac />
+            </Button>
+            <Button
+              bg="#28c93f"
+            >
+              <Icons.fullMac />
+            </Button>
+            <Button
+              bg="#5CC8FF"
+            >
+              <Icons.plusMac />
+            </Button>
+            <Button
+              bg="#E5CEDC"
+            >
+              <Icons.minMac />
+            </Button>
+          </div>
         </div>
-      </div>
-      )}
-      {(atetneState === "START_SCREEN" && (
-        <>
-          <h1>Let's Start!</h1>
-          <button onClick={() => {setAtetneState("CHOOSE_SCREEN")}}>Click</button>
-        </>
-      ))}
-    </main>
+        )}
+        {(atetneState === "START_SCREEN" && (
+          <>
+            <h1>Let's Start!</h1>
+            <button onClick={() => {setAtetneState("CHOOSE_SCREEN")}}>Click</button>
+          </>
+        ))}
+      </main>
+    </LocalMouseCoordinatesProvider>
   );
 }
 
