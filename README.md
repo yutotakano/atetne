@@ -1,7 +1,7 @@
-# Tauri + React + Typescript
+# Atetne （当ててね！）
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+Atetne is a macOS application built around the concept of trying to find the
+correct window control buttons to press.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+Atetneは、macOSにおける3色のウィンドウ操作ボタンをコンセプトにした、「どれが正しいボタンか」
+当てる楽しいソフトです。
