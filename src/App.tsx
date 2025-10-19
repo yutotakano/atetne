@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/Button";
 import { Icons } from "./components/Icon";
 import { cursorPosition, getCurrentWindow } from "@tauri-apps/api/window";
 import { resizeButtonGrid } from "./utils/resize-window";
+
+type AtetneState =
+  | "START_SCREEN"
+  | "CHOOSE_SCREEN"
+  | "HUE_GUESS_1"
+  | "MINESWEEPER_1"
+  | "BAD_APPLE_1"
+  | "CREDITS";
+
+const initialState: AtetneState = "START_SCREEN";
 
 function App() {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
@@ -13,6 +23,14 @@ function App() {
     x: coord.x - winCoord.x,
     y: coord.y - winCoord.y,
   };
+
+  const [atetneState, setAtetneState] = useState(initialState);
+
+  useEffect(() => {
+    if (atetneState === "CHOOSE_SCREEN") {
+      resizeButtonGrid(5, 5, false);
+    }
+  }, [atetneState]);
 
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -35,6 +53,7 @@ function App() {
 
   return (
     <main className="container">
+      {atetneState === "CHOOSE_SCREEN" && (
       <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
         {[...Array(5)].map((_, i) => (
           <div
@@ -44,7 +63,6 @@ function App() {
             {[...Array(5)].map((_, j) => (
               <Button
                 key={i * 5 + j}
-                onClick={() => resizeButtonGrid(5, 5)}
                 currentMouseX={localCoord.x}
                 currentMouseY={localCoord.y}
               >
@@ -54,6 +72,13 @@ function App() {
           </div>
         ))}
       </div>
+      )}
+      {(atetneState === "START_SCREEN" && (
+        <>
+          <h1>Let's Start!</h1>
+          <button onClick={() => {setAtetneState("CHOOSE_SCREEN")}}>Click</button>
+        </>
+      ))}
     </main>
   );
 }
